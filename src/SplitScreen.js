@@ -13,20 +13,25 @@ const Pane = styled.div`
 `;
 
 export const SplitScreen = ({
-  left: Left,
-  right: Right,
+  children,
   // default to 50/50 split
   leftWeight = 1,
   // default to 50/50 split
   rightWeight = 1,
 }) => {
+  // Destructure the children prop
+  const [Left, Right] = children;
   return (
     <Container>
       <Pane weight={leftWeight} className='left'>
-        <Left />
+        {/* Render the Left component */}
+        {/* This is the same as <LeftHandComponent /> */}
+        {Left}
       </Pane>
       <Pane weight={rightWeight} className='right'>
-        <Right />
+        {/* Render the Right component */}
+        {/* This is the same as <RightHandComponent /> */}
+        {Right}
       </Pane>
     </Container>
   );
