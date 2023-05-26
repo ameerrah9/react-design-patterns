@@ -6,16 +6,26 @@ const Container = styled.div`
 
 // Styles applied to left and right components
 const Pane = styled.div`
-  flex: 1;
+  // props.weight is a number, so we need to convert it to a string
+  // to use it in the flex property
+  // comes from the SplitScreen component
+  flex: ${(props) => props.weight};
 `;
 
-export const SplitScreen = ({ left: Left, right: Right }) => {
+export const SplitScreen = ({
+  left: Left,
+  right: Right,
+  // default to 50/50 split
+  leftWeight = 1,
+  // default to 50/50 split
+  rightWeight = 1,
+}) => {
   return (
     <Container>
-      <Pane className='left'>
+      <Pane weight={leftWeight} className='left'>
         <Left />
       </Pane>
-      <Pane className='right'>
+      <Pane weight={rightWeight} className='right'>
         <Right />
       </Pane>
     </Container>
